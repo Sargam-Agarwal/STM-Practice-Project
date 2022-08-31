@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+const dbURI = 'mongodb+srv://dummyUser:password1234@files.ntdja5q.mongodb.net/?retryWrites=true&w=majority';
+
 app.listen(3000);
 
 app.get('/', (req, res) => {
