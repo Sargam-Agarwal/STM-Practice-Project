@@ -1,8 +1,19 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 
 const dbURI = 'mongodb+srv://dummyUser:password1234@files.ntdja5q.mongodb.net/?retryWrites=true&w=majority';
+
+const connectionParams = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
+mongoose.connect(dbURI, connectionParams).then(() => {
+    console.log("Connected Successfully");
+}).catch((err) => {
+    console.log(err);
+})
 
 app.listen(3000);
 
