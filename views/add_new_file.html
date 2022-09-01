@@ -7,14 +7,14 @@
 
 <body>
     <h1>Add a New File</h1>
-    <form>
+    <form action="/files" method="POST">
         <label>File Name</label>
-        <input type="text">
+        <input type="text" name="fileName">
         <label>Version</label>
-        <input type="text">
+        <input type="text" name="version">
         <label>Upload File</label>
-        <input type="file">
-        <input type="button" value="Submit">
+        <input type="file" name="fileURL">
+        <button>Submit</button>
     </form>
 </body>
 
