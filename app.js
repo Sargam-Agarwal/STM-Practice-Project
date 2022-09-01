@@ -21,6 +21,10 @@ app.listen(3000);
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
+    res.sendFile('./views/home_page.html', { root: __dirname });
+});
+
+app.get('/add-new-file', (req, res) => {
     res.sendFile('./views/add_new_file.html', { root: __dirname });
 })
 
@@ -29,6 +33,8 @@ app.post('/files', (req, res) => {
     const file = new File(req.body);
 
     file.save().then(() => console.log("Saved Successfully!")).catch(err => console.log(err));
+
+    res.redirect('/');
 });
 
 app.use((req, res) => {
