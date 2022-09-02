@@ -11,11 +11,11 @@ const fileSchema = new Schema({
         required: true,
     },
     fileURL: {
-        type: String,
+        type: Buffer,
         required: true,
     }
 }, { timestamps: true });
 
-const File = mongoose.model('FileCollections', fileSchema);
+const FileCollections = mongoose.model('FileCollections', fileSchema);
 
-module.exports = File;
+module.exports = FileCollections;
