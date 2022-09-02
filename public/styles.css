@@ -1,0 +1,9 @@
+.home-page-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-page-div a {
+    margin-block-start: 21.440px;
+    margin-block-end: 21.440px;
+}
