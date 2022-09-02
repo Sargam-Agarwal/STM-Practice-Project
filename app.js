@@ -18,6 +18,7 @@ mongoose.connect(dbURI, connectionParams).then(() => {
 
 app.listen(3000);
 
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
