@@ -26,7 +26,8 @@
             </div>
             <div class="file-info-div-2">
                 <h4>
-                    <%= file.createdAt %>
+                    <% const date=new Date(file.createdAt)%>
+                        <%= dateFormatter.format(date, 'DD MMM, YYYY HH:MM:SS' ) %>
                 </h4>
             </div>
         </div>
