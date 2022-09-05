@@ -23,10 +23,11 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.sendFile('./views/home_page.html', { root: __dirname });
+    // res.sendFile('./views/home_page.ejs', { root: __dirname });
     FileCollections.find().then((result) => {
-        console.log(result[0].fileURL.toString());
-        fs.writeFileSync(`../${result[0].fileName}`, result[0].fileURL);
+        res.render('home_page.ejs', { files: result });
+        // console.log(result[0].fileURL.toString());
+        // fs.writeFileSync(`../${result[0].fileName}`, result[0].fileURL);
     }).catch(err => console.log(err));
 });
 

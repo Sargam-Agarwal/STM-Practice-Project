@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="home-page-div">
+        <h1>YOUR UPLOADED FILES</h1>
+        <a href="./add-new-file">
+            <img src="/plus.svg" alt="delete icon" />
+        </a>
+    </div>
+    <div class="display-files">
+        <% files.forEach((file)=> { %>
+            <div class="file-info-div-1">
+                <h3 class="file-info-title">
+                    <%= file.fileName %>
+                </h3>
+                <h4 class="file-info-version">
+                    <%= file.version %>
+                </h4>
+            </div>
+            <div class="file-info-div-2">
+                <h4>
+                    <%= file.createdAt %>
+                </h4>
+            </div>
+            <% }) %>
+    </div>
+</body>
+
+</html>
