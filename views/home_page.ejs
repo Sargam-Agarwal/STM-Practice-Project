@@ -13,8 +13,9 @@
             <img src="/plus.svg" alt="delete icon" />
         </a>
     </div>
-    <div class="display-files">
-        <% files.forEach((file)=> { %>
+
+    <% files.forEach((file)=> { %>
+        <div class="display-files">
             <div class="file-info-div-1">
                 <h3 class="file-info-title">
                     <%= file.fileName %>
@@ -28,8 +29,9 @@
                     <%= file.createdAt %>
                 </h4>
             </div>
-            <% }) %>
-    </div>
+        </div>
+        <% }) %>
+
 </body>
 
 </html>

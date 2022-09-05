@@ -10,6 +10,8 @@
 
 .display-files {
     display: flex;
+    border-bottom: 1px solid black;
+    padding: 10px;
 }
 
 .file-info-div-1 {
