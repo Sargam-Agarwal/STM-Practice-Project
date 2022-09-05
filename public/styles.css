@@ -7,3 +7,23 @@
     margin-block-start: 21.440px;
     margin-block-end: 21.440px;
 }
+
+.display-files {
+    display: flex;
+}
+
+.file-info-div-1 {
+    flex-basis: 75%;
+}
+
+.file-info-div-2 {
+    flex-basis: 25%;
+}
+
+.file-info-title {
+    margin-bottom: 8px;
+}
+
+.file-info-version {
+    margin: 0;
+}
