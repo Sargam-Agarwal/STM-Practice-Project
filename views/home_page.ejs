@@ -20,9 +20,12 @@
     <% files.forEach((file)=> { %>
         <div class="display-files">
             <div class="file-info-div-1">
-                <h3 class="file-info-title">
-                    <%= file.fileName %>
-                </h3>
+                <a style="color: black" href="">
+                    <h3 class="file-info-title">
+                        <%= file.fileName %>
+                    </h3>
+                </a>
+
                 <h4 class="file-info-version">
                     <%= file.version %>
                 </h4>
