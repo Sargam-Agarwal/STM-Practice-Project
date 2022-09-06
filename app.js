@@ -32,6 +32,14 @@ app.get('/', (req, res) => {
     }).catch(err => console.log(err));
 });
 
+var commonPath = '/get-file';
+app.get(`${commonPath}-:id`, (req, response) => {
+    FileCollections.findById(mongoose.Types.ObjectId(req.params.id)).then((result) => {
+        fs.writeFileSync(`./${result.fileName}`, result.fileURL);
+    });
+    response.redirect('/');
+});
+
 app.get('/add-new-file', (req, res) => {
     res.sendFile('./views/add_new_file.html', { root: __dirname });
 })
