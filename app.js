@@ -3,6 +3,19 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const FileCollections = require('./models/file.js');
 const dateFormatter = require('date-and-time');
+const multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        fs.mkdirSync('../multerUploads');
+        cb(null, '../multerUploads');
+    },
+    filename: (req, file, cb) => {
+        cb(null, req.body.fileName);
+    }
+})
+
+const upload = multer({ storage: storage });
 
 const app = express();
 
@@ -18,7 +31,7 @@ mongoose.connect(dbURI, connectionParams).then(() => {
     console.log(err);
 })
 
-app.listen(3000);
+app.listen(8000);
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -41,13 +54,14 @@ app.get('/add-new-file', (req, res) => {
     res.sendFile('./views/add_new_file.html', { root: __dirname });
 })
 
-app.post('/files', (req, res) => {
-    console.log(req.body);
-    const file = new FileCollections(req.body);
+app.post('/files', upload.single('uploaded-file'), (req, res) => {
+    console.log(req);
+    // console.log(req.body);
+    // const file = new FileCollections(req.body);
 
-    file.save().then(() => console.log("Saved Successfully!")).catch(err => console.log(err));
+    // file.save().then(() => console.log("Saved Successfully!")).catch(err => console.log(err));
 
-    res.redirect('/');
+    // res.redirect('/');
 });
 
 app.use((req, res) => {

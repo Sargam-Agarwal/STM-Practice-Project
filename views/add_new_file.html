@@ -8,15 +8,16 @@
 
 <body class="add-new-file-body">
     <h1>Add a New File</h1><br>
-    <form class="form" action="/files" method="POST">
+    <form class="form" action="/files" method="POST" enctype="multipart/form-data">
         <label>File Name</label><br>
         <input class="input-field" type="text" name="fileName"><br><br>
         <label>Version</label><br>
         <input class="input-field" type="text" name="version"><br><br>
         <label>Upload File</label><br>
-        <input type="file" name="fileURL"><br><br>
+        <input type="file" name="uploaded-file" id="fileUpload"><br><br>
         <button>Submit</button>
     </form>
 </body>
+
 
 </html>
