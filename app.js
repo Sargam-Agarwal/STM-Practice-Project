@@ -13,7 +13,7 @@ var storage = multer.diskStorage({
     filename: (req, file, cb) => {
         cb(null, req.body.fileName);
     }
-})
+});
 
 const upload = multer({ storage: storage });
 
@@ -29,7 +29,7 @@ mongoose.connect(dbURI, connectionParams).then(() => {
     console.log("Connected Successfully");
 }).catch((err) => {
     console.log(err);
-})
+});
 
 app.listen(8000);
 
@@ -52,18 +52,19 @@ app.get(`${commonPath}-:id`, (req, response) => {
 
 app.get('/add-new-file', (req, res) => {
     res.sendFile('./views/add_new_file.html', { root: __dirname });
-})
+});
 
 app.post('/files', upload.single('uploaded-file'), (req, res) => {
-    console.log(req);
-    // console.log(req.body);
-    // const file = new FileCollections(req.body);
+    console.log(req.file.path);
+    console.log(req.body);
+    req.body.fileURL = req.file.path;
+    const file = new FileCollections(req.body);
 
-    // file.save().then(() => console.log("Saved Successfully!")).catch(err => console.log(err));
+    file.save().then(() => console.log("Saved Successfully!")).catch(err => console.log(err));
 
-    // res.redirect('/');
+    res.redirect('/');
 });
 
 app.use((req, res) => {
     res.status(404).sendFile('./views/404.html', { root: __dirname });
-})
+});
