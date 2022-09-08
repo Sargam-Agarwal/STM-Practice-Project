@@ -7,7 +7,8 @@ const multer = require('multer');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        fs.mkdirSync('../multerUploads');
+        if (!fs.existsSync('../multerUploads'))
+            fs.mkdirSync('../multerUploads');
         cb(null, '../multerUploads');
     },
     filename: (req, file, cb) => {

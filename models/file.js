@@ -11,7 +11,7 @@ const fileSchema = new Schema({
         required: true,
     },
     fileURL: {
-        type: Buffer,
+        type: String,
         required: true,
     }
 }, { timestamps: true });
